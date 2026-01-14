@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Latihan Soal</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --primary: #dc2626; /* Merah Utama */
+        --primary-dark: #991b1b;
+        --primary-light: #fef2f2;
+        --bg: #fff1f1;
+        --text-main: #450a0a;
+        --text-muted: #991b1b;
+        --white: #ffffff;
+        --shadow: 0 10px 15px -3px rgba(153, 27, 27, 0.1);
+    }
+
+    body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background-color: var(--bg);
+        color: var(--text-main);
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+    }
+
+    .header {
+        background: linear-gradient(135deg, #b91c1c 0%, #dc2626 100%);
+        color: white;
+        padding: 50px 20px;
+        text-align: center;
+        box-shadow: var(--shadow);
+        border-bottom: 5px solid #991b1b;
+    }
+
+    .header h2 { margin: 0; font-size: 30px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
+    .header p { margin: 10px 0 0; opacity: 0.9; font-weight: 500; }
+
+    .container {
+        max-width: 850px;
+        margin: -40px auto 60px;
+        padding: 0 20px;
+    }
+
+    .card {
+        background: var(--white);
+        border-radius: 16px;
+        padding: 35px;
+        box-shadow: var(--shadow);
+        margin-bottom: 30px;
+        border: 1px solid rgba(220, 38, 38, 0.1);
+    }
+
+    .input-group label {
+        display: block;
+        font-weight: 700;
+        margin-bottom: 10px;
+        color: var(--primary);
+        font-size: 14px;
+        text-transform: uppercase;
+    }
+
+    input[type="text"] {
+        width: 100%;
+        padding: 15px;
+        border: 2px solid #fee2e2;
+        border-radius: 10px;
+        font-size: 16px;
+        box-sizing: border-box;
+        transition: all 0.3s;
+        background-color: #fffafb;
+    }
+
+    input[type="text"]:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.1);
+    }
+
+    h3 {
+        color: var(--primary);
+        font-size: 20px;
+        border-left: 5px solid var(--primary);
+        padding-left: 15px;
+        margin-bottom: 30px;
+    }
+
+    .q {
+        margin-bottom: 25px;
+        padding: 25px;
+        border-radius: 12px;
+        background: var(--white);
+        border: 1px solid #fee2e2;
+        transition: transform 0.2s;
+    }
+
+    .q:hover {
+        transform: translateY(-2px);
+        border-color: #fca5a5;
+    }
+
+    .q p {
+        font-weight: 700;
+        margin-top: 0;
+        font-size: 17px;
+    }
+
+    .option {
+        display: flex;
+        align-items: center;
+        margin: 12px 0;
+        padding: 14px 18px;
+        border-radius: 10px;
+        border: 1px solid #fecaca;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+
+    .option:hover {
+        background-color: var(--primary-light);
+        border-color: var(--primary);
+    }
+
+    .option input {
+        margin-right: 15px;
+        width: 20px;
+        height: 20px;
+        accent-color: var(--primary);
+    }
+
+    textarea {
+        width: 100%;
+        height: 120px;
+        padding: 15px;
+        border: 2px solid #fee2e2;
+        border-radius: 10px;
+        font-family: inherit;
+        font-size: 15px;
+        box-sizing: border-box;
+        resize: vertical;
+        background: #fffafb;
+    }
+
+    textarea:focus {
+        outline: none;
+        border-color: var(--primary);
+    }
+
+    button {
+        display: block;
+        width: 100%;
+        padding: 20px;
+        background-color: var(--primary);
+        color: white;
+        border: none;
+        border-radius: 12px;
+        font-size: 18px;
+        font-weight: 800;
+        cursor: pointer;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s;
+        box-shadow: 0 10px 15px -3px rgba(220, 38, 38, 0.3);
+    }
+
+    button:hover {
+        background-color: var(--primary-dark);
+        transform: translateY(-2px);
+    }
+
+    .result {
+        background: #fff;
+        border: 2px solid var(--primary);
+        padding: 30px;
+        border-radius: 16px;
+        margin-top: 40px;
+        text-align: center;
+        color: var(--text-main);
+        animation: popIn 0.5s cubic-bezier(0.26, 0.53, 0.74, 1.48);
+    }
+
+    @keyframes popIn {
+        from { opacity: 0; transform: scale(0.9); }
+        to { opacity: 1; transform: scale(1); }
+    }
+
+    @media (max-width: 600px) {
+        .header h2 { font-size: 22px; }
+        .card { padding: 20px; }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <h2>Latihan Soal</h2>
+    <p>Gunakan teknologi dengan bijak untuk masa depan bangsa.</p>
+</div>
+
+<div class="container">
+    <div class="card">
+        <div class="input-group">
+            <label for="studentName">Isi Nama Lengkap</label>
+            <input type="text" id="studentName" placeholder="Masukkan Nama Lengkap Anda">
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>I. Bagian Pilihan Ganda</h3>
+
+        <div class="q">
+            <p>1. Sikap tanggung jawab dalam memanfaatkan IPTEK berarti …</p>
+            <label class="option"><input type="radio" name="q1" value="a"> <span>a. Menggunakan teknologi tanpa mempertimbangkan dampaknya</span></label>
+            <label class="option"><input type="radio" name="q1" value="b"> <span>b. Menyadari konsekuensi penggunaan IPTEK dan memanfaatkannya secara bijak</span></label>
+            <label class="option"><input type="radio" name="q1" value="c"> <span>c. Menghindari penggunaan teknologi modern sama sekali</span></label>
+            <label class="option"><input type="radio" name="q1" value="d"> <span>d. Membatasi akses IPTEK hanya untuk kepentingan pribadi</span></label>
+            <label class="option"><input type="radio" name="q1" value="e"> <span>e. Membiarkan perkembangan IPTEK tanpa pengawasan</span></label>
+        </div>
+
+        <div class="q">
+            <p>2. Contoh sikap tanggung jawab dalam penggunaan media sosial adalah …</p>
+            <label class="option"><input type="radio" name="q2" value="a"> <span>a. Menyebarkan berita tanpa memeriksa kebenarannya</span></label>
+            <label class="option"><input type="radio" name="q2" value="b"> <span>b. Memanfaatkan media sosial untuk berbagi karya dan pengetahuan positif</span></label>
+            <label class="option"><input type="radio" name="q2" value="c"> <span>c. Mengunggah konten provokatif</span></label>
+            <label class="option"><input type="radio" name="q2" value="d"> <span>d. Menggunakan akun palsu untuk menyerang pihak lain</span></label>
+            <label class="option"><input type="radio" name="q2" value="e"> <span>e. Mengabaikan etika komunikasi dalam dunia maya</span></label>
+        </div>
+
+        <div class="q">
+            <p>3. Sikap selektif di bidang politik ditunjukkan dengan …</p>
+            <label class="option"><input type="radio" name="q3" value="a"> <span>a. Menolak semua informasi politik dari media</span></label>
+            <label class="option"><input type="radio" name="q3" value="b"> <span>b. Menyebarkan isu politik yang belum jelas kebenarannya</span></label>
+            <label class="option"><input type="radio" name="q3" value="c"> <span>c. Memeriksa kebenaran informasi politik melalui sumber resmi</span></label>
+            <label class="option"><input type="radio" name="q3" value="d"> <span>d. Tidak peduli terhadap perkembangan politik nasional</span></label>
+            <label class="option"><input type="radio" name="q3" value="e"> <span>e. Mengutamakan politik identitas dalam kehidupan bermasyarakat</span></label>
+        </div>
+
+        <div class="q">
+            <p>4. Salah satu bentuk implementasi sikap selektif di bidang politik adalah …</p>
+            <label class="option"><input type="radio" name="q4" value="a"> <span>a. Mengabaikan pemilu karena tidak percaya pada politik</span></label>
+            <label class="option"><input type="radio" name="q4" value="b"> <span>b. Memverifikasi berita politik di situs resmi pemerintah sebelum menyebarkannya</span></label>
+            <label class="option"><input type="radio" name="q4" value="c"> <span>c. Mengikuti semua berita politik dari media sosial tanpa kritik</span></label>
+            <label class="option"><input type="radio" name="q4" value="d"> <span>d. Membagikan konten politik provokatif untuk mendapat dukungan</span></label>
+            <label class="option"><input type="radio" name="q4" value="e"> <span>e. Menggunakan teknologi untuk menyebarkan ujaran kebencian</span></label>
+        </div>
+
+        <div class="q">
+            <p>5. Sikap selektif dalam bidang ekonomi berarti …</p>
+            <label class="option"><input type="radio" name="q5" value="a"> <span>a. Membeli produk asing tanpa pertimbangan</span></label>
+            <label class="option"><input type="radio" name="q5" value="b"> <span>b. Mengutamakan gaya hidup konsumtif</span></label>
+            <label class="option"><input type="radio" name="q5" value="c"> <span>c. Mendukung produk dalam negeri dan menggunakan teknologi untuk produktivitas</span></label>
+            <label class="option"><input type="radio" name="q5" value="d"> <span>d. Menolak semua bentuk transaksi digital</span></label>
+            <label class="option"><input type="radio" name="q5" value="e"> <span>e. Menggunakan aplikasi keuangan yang tidak resmi</span></label>
+        </div>
+
+        <div class="q">
+            <p>6. Contoh nyata sikap selektif di bidang ekonomi adalah …</p>
+            <label class="option"><input type="radio" name="q6" value="a"> <span>a. Menggunakan aplikasi keuangan ilegal karena lebih cepat</span></label>
+            <label class="option"><input type="radio" name="q6" value="b"> <span>b. Membeli produk impor meskipun produk lokal tersedia</span></label>
+            <label class="option"><input type="radio" name="q6" value="c"> <span>c. Mengembangkan usaha berbasis teknologi yang memberdayakan potensi lokal</span></label>
+            <label class="option"><input type="radio" name="q6" value="d"> <span>d. Menghabiskan waktu untuk belanja online tanpa kendali</span></label>
+            <label class="option"><input type="radio" name="q6" value="e"> <span>e. Menjadi konsumen pasif dalam ekonomi digital</span></label>
+        </div>
+
+        <div class="q">
+            <p>7. Kemajuan IPTEK di bidang sosial budaya menuntut sikap selektif agar …</p>
+            <label class="option"><input type="radio" name="q7" value="a"> <span>a. Semua budaya asing ditolak mentah-mentah</span></label>
+            <label class="option"><input type="radio" name="q7" value="b"> <span>b. Budaya lokal sepenuhnya digantikan budaya global</span></label>
+            <label class="option"><input type="radio" name="q7" value="c"> <span>c. Budaya asing dapat diambil sisi positifnya tanpa menghilangkan identitas nasional</span></label>
+            <label class="option"><input type="radio" name="q7" value="d"> <span>d. Masyarakat hanya meniru budaya luar tanpa kritik</span></label>
+            <label class="option"><input type="radio" name="q7" value="e"> <span>e. Generasi muda melupakan tradisi leluhur</span></label>
+        </div>
+
+        <div class="q">
+            <p>8. Contoh implementasi sikap selektif di bidang sosial budaya adalah …</p>
+            <label class="option"><input type="radio" name="q8" value="a"> <span>a. Menggunakan media sosial untuk meniru budaya asing secara berlebihan</span></label>
+            <label class="option"><input type="radio" name="q8" value="b"> <span>b. Memperkenalkan budaya lokal melalui platform digital agar dikenal dunia</span></label>
+            <label class="option"><input type="radio" name="q8" value="c"> <span>c. Meninggalkan bahasa daerah demi mengikuti tren global</span></label>
+            <label class="option"><input type="radio" name="q8" value="d"> <span>d. Mengidolakan budaya luar tanpa menghargai budaya sendiri</span></label>
+            <label class="option"><input type="radio" name="q8" value="e"> <span>e. Mengabaikan warisan budaya nasional karena dianggap kuno</span></label>
+        </div>
+
+        <div class="q">
+            <p>9. Generasi muda dapat menunjukkan sikap tanggung jawab dalam perkembangan IPTEK dengan cara …</p>
+            <label class="option"><input type="radio" name="q9" value="a"> <span>a. Melakukan plagiarisme karena lebih praktis</span></label>
+            <label class="option"><input type="radio" name="q9" value="b"> <span>b. Menggunakan teknologi hanya untuk hiburan tanpa produktivitas</span></label>
+            <label class="option"><input type="radio" name="q9" value="c"> <span>c. Menjaga etika digital dan menghargai hak cipta</span></label>
+            <label class="option"><input type="radio" name="q9" value="d"> <span>d. Menyebarkan ujaran kebencian sebagai bentuk ekspresi</span></label>
+            <label class="option"><input type="radio" name="q9" value="e"> <span>e. Menggunakan akun anonim untuk menyerang orang lain</span></label>
+        </div>
+
+        <div class="q">
+            <p>10. Dari uraian berikut, yang bukan termasuk sikap selektif terhadap pengaruh IPTEK adalah …</p>
+            <label class="option"><input type="radio" name="q10" value="a"> <span>a. Memeriksa kebenaran informasi politik</span></label>
+            <label class="option"><input type="radio" name="q10" value="b"> <span>b. Mendukung produk lokal dalam ekonomi digital</span></label>
+            <label class="option"><input type="radio" name="q10" value="c"> <span>c. Melestarikan budaya nasional melalui media teknologi</span></label>
+            <label class="option"><input type="radio" name="q10" value="d"> <span>d. Menyerap nilai-nilai positif budaya asing</span></label>
+            <label class="option"><input type="radio" name="q10" value="e"> <span>e. Menolak semua bentuk perkembangan IPTEK</span></label>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>II. Bagian Esai</h3>
+        <div class="q"><p>1. Apa saja sikap selektif yang perlu ditunjukkan dalam bidang ekonomi agar kemajuan IPTEK memberikan manfaat maksimal?</p><textarea></textarea></div>
+        <div class="q"><p>2. Jelaskan contoh implementasi sikap selektif dalam bidang ekonomi melalui dukungan terhadap produk lokal!</p><textarea></textarea></div>
+        <div class="q"><p>3. Mengapa sikap selektif dalam bidang sosial budaya sangat penting untuk menjaga identitas nasional?</p><textarea></textarea></div>
+        <div class="q"><p>4. Berikan contoh nyata penggunaan IPTEK yang mencerminkan sikap selektif dalam melestarikan budaya Indonesia!</p><textarea></textarea></div>
+        <div class="q"><p>5. Bagaimana strategi membangun sikap selektif pada generasi muda agar dapat memanfaatkan IPTEK secara bijak?</p><textarea></textarea></div>
+    </div>
+
+    <button id="submitBtn">Selesaikan & Kirim Jawaban</button>
+
+    <div id="resultArea"></div>
+</div>
+
+<form id="gfForm" action="https://docs.google.com/forms/d/1dVw-2MlQQExDxnrFVMydA-ef2qIBvOSkDNGcs4KeQy4/formResponse" method="POST" target="hidden_iframe">
+<input type="hidden" name="entry.711309727" id="gf_name">
+<input type="hidden" name="entry.484652064" id="gf_score">
+<input type="hidden" name="entry.1737061837" id="gf_status">
+</form>
+<iframe name="hidden_iframe" style="display:none"></iframe>
+
+<script>
+const kunci={q1:"b",q2:"b",q3:"c",q4:"b",q5:"c",q6:"c",q7:"c",q8:"b",q9:"c",q10:"e"};
+
+document.getElementById("submitBtn").onclick=()=>{
+    let nama = document.getElementById("studentName").value.trim();
+    if(!nama) return alert("Wajib memasukkan nama!");
+
+    let benar=0;
+    for(let q in kunci){
+        let p=document.querySelector(`input[name=${q}]:checked`);
+        if(p && p.value===kunci[q]) benar++;
+    }
+    let nilai=Math.round(benar/10*100);
+    let status=nilai>=75?"LULUS (KOMPETEN)":"BELUM LULUS (REMEDIAL)";
+
+    document.getElementById("gf_name").value=nama;
+    document.getElementById("gf_score").value=nilai;
+    document.getElementById("gf_status").value=status;
+    document.getElementById("gfForm").submit();
+
+    document.getElementById("resultArea").innerHTML=`
+    <div class="result">
+        <h2 style="color: var(--primary); margin-top:0;">Hasil Ujian</h2>
+        <p>Peserta: <strong>${nama}</strong></p>
+        <div style="font-size: 48px; font-weight: 800; color: var(--primary); margin: 20px 0;">${nilai}</div>
+        <p>Status: <strong>${status}</strong></p>
+        <p style="margin-bottom:0; font-size: 14px; color: var(--text-muted);">Jawaban Anda telah tercatat secara otomatis.</p>
+    </div>`;
+
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+};
+</script>
+
+</body>
+</html>
